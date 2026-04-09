@@ -181,6 +181,7 @@ body::after {
     flex: 1;
     padding: 2rem 3rem;
     max-width: 1400px;
+    transition: margin-left 0.3s ease;
 }
 
 .top-header {
@@ -577,29 +578,124 @@ td {
     }
 }
 
-/* Responsive Scaling */
+/* Mobile Optimization & Responsive Scaling */
 @media (max-width: 1200px) {
     .stats-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px;
+        padding: 1.5rem 0.5rem;
+        align-items: center;
     }
     
-    .summary-content {
+    .brand h1, .nav-item span:not(.icon), .user-info, .sidebar-footer {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-left: 80px;
+        padding: 1.5rem;
+    }
+
+    .unit-entry-container {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    .sidebar {
-        width: 80px;
-        padding: 1.5rem 1rem;
+    .stats-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
-    
-    .brand h1, .nav-item span:not(.icon), .user-info {
+
+    .top-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .header-right {
+        width: 100%;
+    }
+
+    .btn-alert {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .summary-content {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-chart-placeholder {
+        height: 180px;
+    }
+}
+
+/* Classic Mobile Bottom Navigation for very small screens */
+@media (max-width: 576px) {
+    .sidebar {
+        width: 100%;
+        height: 70px;
+        flex-direction: row;
+        bottom: 0;
+        top: auto;
+        padding: 0 1rem;
+        border-right: none;
+        border-top: 1px solid var(--glass-border);
+        justify-content: space-around;
+        background: rgba(30, 41, 59, 0.95);
+        backdrop-filter: blur(20px);
+    }
+
+    .brand {
         display: none;
     }
-    
+
+    .nav-menu {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    .nav-item {
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+
+    .nav-item .icon {
+        font-size: 1.2rem;
+    }
+
     .main-content {
-        margin-left: 80px;
-        padding: 1.5rem;
+        margin-left: 0;
+        margin-bottom: 80px; /* Space for bottom nav */
+        padding: 1rem;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .card-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
     }
 }
