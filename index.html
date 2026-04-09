@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockPro | Inventory Dashboard</title>
+    <meta name="description" content="Next-gen inventory management system with real-time stock tracking and predictive alerts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="logo-icon"></div>
+                <h1>StockPro</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" id="nav-dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item" id="nav-inventory">
+                    <span class="icon">📦</span> Inventory
+                </a>
+                <a href="#" class="nav-item" id="nav-unit-entry">
+                    <span class="icon">📏</span> Unit Entry
+                </a>
+                <a href="#" class="nav-item" id="nav-orders">
+                    <span class="icon">🛒</span> Orders
+                </a>
+                <a href="#" class="nav-item" id="nav-reports">
+                    <span class="icon">📈</span> Reports
+                </a>
+                <a href="#" class="nav-item" id="nav-settings">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff" alt="User" class="avatar">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Manager</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2 id="page-title">Dashboard Overview</h2>
+                    <p class="subtitle" id="page-subtitle">Welcome back! Here's what's happening today.</p>
+                </div>
+                <div class="header-right">
+                    <button id="alert-button" class="btn-alert">
+                        <span class="alert-icon">🔔</span>
+                        <span class="alert-text">Status: Normal</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section">
+                <div class="dashboard-grid">
+                <!-- Stats Row -->
+                <div class="stats-row">
+                    <div class="stat-card glass" id="total-stock-card">
+                        <div class="card-icon stock-in">📥</div>
+                        <div class="card-info">
+                            <h3>Total Stock</h3>
+                            <p class="stat-value" id="total-stock-value">0</p>
+                            <span class="stat-trend trend-up">↑ 12% this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glass" id="low-stock-card">
+                        <div class="card-icon low-stock">⚠️</div>
+                        <div class="card-info">
+                            <h3>Low Stock Items</h3>
+                            <p class="stat-value" id="low-stock-value">0</p>
+                            <span class="stat-label">Action required</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glass" id="daily-movement-card">
+                        <div class="card-icon movement">🔄</div>
+                        <div class="card-info">
+                            <h3>Daily Stock In/Out</h3>
+                            <div class="movement-values">
+                                <div class="mov-item">
+                                    <span class="mov-label">In:</span>
+                                    <span class="mov-value in" id="daily-in-value">0</span>
+                                </div>
+                                <div class="mov-item">
+                                    <span class="mov-label">Out:</span>
+                                    <span class="mov-value out" id="daily-out-value">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warehouse Summary -->
+                <div class="summary-section glass">
+                    <div class="section-header">
+                        <h3>Warehouse Summary</h3>
+                        <div class="actions">
+                            <button class="btn-secondary">Export Data</button>
+                        </div>
+                    </div>
+                    <div class="summary-content">
+                        <div class="warehouse-stats">
+                            <div class="wh-item">
+                                <span class="wh-label">Capacity Utilization</span>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 78%;"></div>
+                                </div>
+                                <span class="wh-value">78%</span>
+                            </div>
+                            <div class="wh-item">
+                                <span class="wh-label">Active Warehouses</span>
+                                <span class="wh-value">4 Areas</span>
+                            </div>
+                            <div class="wh-item">
+                                <span class="wh-label">Last Audit</span>
+                                <span class="wh-value">2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="summary-chart-placeholder" id="summary-chart">
+                            <!-- In a real app, a chart would go here. For now, a visual representation -->
+                            <div class="visual-grid">
+                                <div class="grid-bar" style="height: 40%;"></div>
+                                <div class="grid-bar" style="height: 60%;"></div>
+                                <div class="grid-bar" style="height: 85%;"></div>
+                                <div class="grid-bar" style="height: 50%;"></div>
+                                <div class="grid-bar" style="height: 90%;"></div>
+                                <div class="grid-bar" style="height: 70%;"></div>
+                                <div class="grid-bar" style="height: 45%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unit Entry Section -->
+            <section id="unit-entry-section" class="content-section hidden">
+                <div class="unit-entry-container">
+                    <div class="form-card glass">
+                        <div class="card-header">
+                            <h3>UNIT ENTRY</h3>
+                        </div>
+                        <form id="unit-form" class="unit-form">
+                            <div class="form-group">
+                                <label for="record-id">Record ID</label>
+                                <input type="text" id="record-id" readonly class="readonly-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="unit-name">Unit Name</label>
+                                <input type="text" id="unit-name" placeholder="e.g. KG, LITER" required maxlength="20">
+                                <small class="input-hint">Only alphabets allowed (Uppercase auto-applied)</small>
+                            </div>
+                            <div class="form-footer">
+                                <button type="submit" id="save-unit-btn" class="btn-primary">Save Unit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="data-table-container glass">
+                        <div class="table-header">
+                            <h3>Registered Units</h3>
+                        </div>
+                        <div class="table-wrapper">
+                            <table id="unit-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>UNIT NAME</th>
+                                        <th class="text-right">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="unit-table-body">
+                                    <!-- Units will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
